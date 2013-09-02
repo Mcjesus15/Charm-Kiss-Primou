@@ -222,7 +222,7 @@ Some points for a filesystem to consider:
   as tmpfs should not enable cleancache)
 - To ensure coherency/correctness, the FS must ensure that all
   file removal or truncation operations either go through VFS or
-  add hooks to do the equivalent cleancache "flush" operations
+  add hooks to do the equivalent cleancache "invalidate" operations
 - To ensure coherency/correctness, either inode numbers must
   be unique across the lifetime of the on-disk file OR the
   FS must provide an "encode_fh" function.

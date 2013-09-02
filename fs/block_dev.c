@@ -93,6 +93,7 @@ static void kill_bdev(struct block_device *bdev)
 	invalidate_bh_lrus();
 	truncate_inode_pages(bdev->bd_inode->i_mapping, 0);
 }	
+EXPORT_SYMBOL(kill_bdev);
 
 int set_blocksize(struct block_device *bdev, int size)
 {
