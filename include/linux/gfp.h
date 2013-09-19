@@ -7,7 +7,7 @@
 #include <linux/topology.h>
 #include <linux/mmdebug.h>
 
-struct vm_area_struct;
+// struct vm_area_struct;
 
 /* Plain integer GFP bitmasks. Do not use this directly. */
 #define ___GFP_DMA		0x01u
