@@ -674,6 +674,8 @@ static bool free_pages_prepare(struct page *page, unsigned int order)
 	int i;
 	int bad = 0;
 
+	unsigned long index = 1UL << order;
+
 	trace_mm_page_free_direct(page, order);
 	kmemcheck_free_shadow(page, order);
 
@@ -689,6 +691,10 @@ static bool free_pages_prepare(struct page *page, unsigned int order)
 		debug_check_no_obj_freed(page_address(page),
 					   PAGE_SIZE << order);
 	}
+
+	for (; index; --index)
+		sanitize_highpage(page + index - 1);
+
 	arch_free_page(page, order);
 	kernel_map_pages(page, 1 << order, 0);
 
@@ -1907,7 +1913,7 @@ __alloc_pages_may_oom(gfp_t gfp_mask, unsigned int order,
 			goto out;
 	}
 	/* Exhausted what can be done so it's blamo time */
-	out_of_memory(zonelist, gfp_mask, order, nodemask);
+	out_of_memory(zonelist, gfp_mask, order, nodemask, false);
 
 out:
 	clear_zonelist_oom(zonelist, gfp_mask);
