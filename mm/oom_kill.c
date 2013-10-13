@@ -333,10 +333,8 @@ static struct task_struct *select_bad_process(unsigned int *ppoints,
 		 * blocked waiting for another task which itself is waiting
 		 * for memory. Is there a better alternative?
 		 */
-		if (test_tsk_thread_flag(p, TIF_MEMDIE)) {
-			if (!force_kill)
-				return ERR_PTR(-1UL);
-		}
+		if (test_tsk_thread_flag(p, TIF_MEMDIE))
+		return ERR_PTR(-1UL);
 		if (!p->mm)
 			continue;
 
