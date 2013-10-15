@@ -1,0 +1,26 @@
+diff a/drivers/cpufreq/Kconfig b/drivers/cpufreq/Kconfig	(rejected hunks)
+@@ -234,6 +241,24 @@ config CPU_FREQ_GOV_SMARTMAX_M7
+ 	bool "'smartmax' defaults for m7"
+ 	depends on CPU_FREQ_GOV_SMARTMAX
+ 
++config CPU_FREQ_GOV_INTELLIDEMAND
++	tristate "'intellidemand' cpufreq policy governor"
++	select CPU_FREQ_TABLE
++	help
++	  'intellidemand' - This driver adds a dynamic cpufreq policy governor.
++	  The governor does a periodic polling and
++	  changes frequency based on the CPU utilization.
++	  The support for this governor depends on CPU capability to
++	  do fast frequency switching (i.e, very low latency frequency
++	  transitions). with browsing detection based on GPU loading
++	
++	  To compile this driver as a module, choose M here: the
++	  module will be called cpufreq_ondemand.
++	
++	  For details, take a look at linux/Documentation/cpu-freq.
++	
++	  If in doubt, say N.
++
+ config CPU_FREQ_GOV_INTERACTIVE
+ 	tristate "'interactive' cpufreq policy governor"
+ 	help
