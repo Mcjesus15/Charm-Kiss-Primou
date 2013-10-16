@@ -1,0 +1,10 @@
+diff a/scripts/kconfig/lxdialog/textbox.c b/scripts/kconfig/lxdialog/textbox.c	(rejected hunks)
+@@ -325,7 +325,7 @@ static void print_line(WINDOW * win, int row, int width)
+ 	line = get_line();
+ 	line += MIN(strlen(line), hscroll);	/* Scroll horizontally */
+ 	wmove(win, row, 0);	/* move cursor to correct line */
+-	waddch(win, '');
++	waddch(win, ' ');
+ 	waddnstr(win, line, MIN(strlen(line), width - 2));
+ 
+ 	/* Clear 'residue' of previous line */
