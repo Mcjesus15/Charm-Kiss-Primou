@@ -1,4 +1,4 @@
-menu "CPU Frequency scaling"
+menu "CPU Frequency scdling"
 
 config CPU_FREQ
 	bool "CPU Frequency scaling"
@@ -89,7 +89,7 @@ config CPU_FREQ_DEFAULT_GOV_ONDEMAND
 	  driver. Fallback governor will be the performance governor.
 
 
-config CPU_FREQ_DEFAULT_GOV_ADAPTIVE
+config CPU_FREQ_DEFAULT_GOV_BRAZILIANWAX
 	bool "brazilianwax"
 	select CPU_FREQ_GOV_BRAZILIANWAX
 	---help---
