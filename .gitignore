@@ -35,6 +35,8 @@ modules.builtin
 *.lz4
 *.S
 *.xzkern
+*.rej
+*.orig
 
 #
 # Top-level generic files
