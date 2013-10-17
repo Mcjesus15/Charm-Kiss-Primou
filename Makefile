@@ -354,11 +354,11 @@ CC		= $(srctree)/scripts/gcc-wrapper.py $(REAL_CC)
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-MODFLAGS  = -DMODULE -mtune=cortex-a8 -ftree-vectorize -ffast-math -fsingle-precision-constant -march=armv7-a -mfpu=neon -mvectorize-with-neon-quad -funroll-loops -fsched-spec-load
+MODFLAGS  = -DMODULE -mtune=cortex-a8 -ftree-vectorize -ffast-math -fsingle-precision-constant -mfpu=neon -mvectorize-with-neon-quad -funroll-loops -fsched-spec-load
 CFLAGS_MODULE   = $(MODFLAGS)
 AFLAGS_MODULE   = $(MODFLAGS)
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL  = -mtune=cortex-a8 -ftree-vectorize -ffast-math -fsingle-precision-constant -march=armv7-a -mfpu=neon -mvectorize-with-neon-quad -funroll-loops -fsched-spec-load
+CFLAGS_KERNEL  = -mtune=cortex-a8 -ftree-vectorize -ffast-math -fsingle-precision-constant -mfpu=neon -mvectorize-with-neon-quad -funroll-loops -fsched-spec-load
 AFLAGS_KERNEL	=
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
@@ -377,7 +377,6 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
 		   -fno-delete-null-pointer-checks \
-		   -march=armv7-a \
 		   -mtune=cortex-a8 \
 		          -mfpu=neon
 KBUILD_AFLAGS_KERNEL :=
