@@ -33,9 +33,9 @@ struct cleancache_ops {
 	 * renamed to invalidate_* in a later commit in which all
 	 * dependencies (i.e Xen, zcache) will be renamed simultaneously
 	 */
-	void (*flush_page)(int, struct cleancache_filekey, pgoff_t);
-	void (*flush_inode)(int, struct cleancache_filekey);
-	void (*flush_fs)(int);
+	void (*invalidate_page)(int, struct cleancache_filekey, pgoff_t);
+	void (*invalidate_inode)(int, struct cleancache_filekey);
+	void (*invalidate_fs)(int);
 };
 
 extern struct cleancache_ops
