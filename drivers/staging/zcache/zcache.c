@@ -26,10 +26,10 @@
 #include <linux/slab.h>
 #include <linux/spinlock.h>
 #include <linux/types.h>
-#include <asm/atomic.h>
+#include <linux/atomic.h>
 #include "tmem.h"
 
-#include "../ramzswap/sub-projects/allocators/xvmalloc-kmod/xvmalloc.h" /* if built in drivers/staging */
+#include "../zram/xvmalloc.h" /* if built in drivers/staging */
 
 #if (!defined(CONFIG_CLEANCACHE) && !defined(CONFIG_FRONTSWAP))
 #error "zcache is useless without CONFIG_CLEANCACHE or CONFIG_FRONTSWAP"
@@ -790,6 +790,7 @@ static int zcache_do_preload(struct tmem_pool *pool)
 	page = (void *)__get_free_page(ZCACHE_GFP_MASK);
 	if (unlikely(page == NULL)) {
 		zcache_failed_get_free_pages++;
+		kmem_cache_free(zcache_obj_cache, obj);
 		goto unlock_out;
 	}
 	preempt_disable();
